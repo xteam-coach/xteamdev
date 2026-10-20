@@ -17,11 +17,12 @@
 <?php include 'partials/sidebar.html'; ?>
 <main id="main" tabindex="-1">
 <?php include 'pages/dashboard.html'; ?>
-<?php include 'pages/aifoodkcalhtml'; ?>
+<?php include 'pages/aifoodkcal.html'; ?>
 <?php include 'pages/messages.html'; ?>
 <?php include 'pages/settings.html'; ?>
 </main>
 <?php include 'partials/footer.html'; ?>
 <script src="js/app.js"></script>
+<script src="js/kcal.js"></script>
 </body>
 </html>

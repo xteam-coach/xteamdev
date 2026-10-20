@@ -150,3 +150,40 @@ body.open aside{transform:none}
 body.open .scrim{display:block;position:fixed;inset:0;background:rgba(5,15,17,.5);z-index:30}
 }
 @media (prefers-reduced-motion:reduce){aside{transition:none}}
+
+/* AI food kcal page */
+.xt-cal{max-width:860px}
+.xt-cal .xt-head h2{font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:28px;margin:0 0 14px}
+.xt-cal .xt-head h2 span{color:var(--brand)}
+.xt-cal .xt-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.xt-cal .guide-box{display:grid;gap:6px;font-size:15px}
+.xt-cal .choice-container{margin:16px 0}
+.xt-cal .choice-btn,.xt-cal .btn-add,.xt-cal .btn-recalc{border:0;background:var(--brand);color:var(--brand-ink);font-weight:800;padding:12px 22px;border-radius:10px;cursor:pointer}
+.xt-cal .btn-add{background:var(--surface);border:1px solid var(--line);color:var(--ink)}
+.xt-cal .btn-recalc:hover,.xt-cal .choice-btn:hover{background:var(--gold)}
+.xt-cal .preview-container{display:none}
+.xt-cal .loading{padding:20px;text-align:center;font-weight:600}
+.xt-cal .annotated-wrapper{position:relative;display:inline-block;max-width:100%;margin-bottom:14px;border-radius:12px;overflow:hidden}
+.xt-cal .annotated-wrapper img{display:block;max-width:100%;height:auto}
+.xt-cal .label-tag{position:absolute;background:rgba(11,13,10,.82);color:#fff;padding:4px 10px;border-radius:999px;font-size:13px;line-height:1.3;cursor:grab;touch-action:none;white-space:nowrap;border:1px solid var(--brand);text-align:center}
+.xt-cal .label-tag .food-cal{color:var(--brand);font-weight:800}
+.xt-cal .total{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin-bottom:12px}
+.xt-cal .ring-card{display:flex;align-items:center;gap:16px;margin:0}
+.xt-cal .ring{position:relative;width:96px;height:96px;flex:none}
+.xt-cal .ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.xt-cal .ring circle{fill:none;stroke-width:9}
+.xt-cal .ring .trk{stroke:var(--line)}
+.xt-cal .ring .bar{stroke:var(--brand);stroke-linecap:round;transition:stroke-dashoffset .5s}
+.xt-cal .pct{position:absolute;inset:0;display:grid;place-items:center;font-weight:800}
+.xt-cal .stat{display:flex;flex-direction:column}
+.xt-cal .stat .lbl{color:var(--muted);font-size:14px}
+.xt-cal .stat .val{font:800 28px/1.1 "Barlow Condensed",sans-serif}
+.xt-cal .stat small{font-size:14px;margin-left:4px;color:var(--muted)}
+.xt-cal .hand-badge{margin-top:4px;font-size:13px;color:var(--gold);font-weight:600}
+.xt-cal .food-item{position:relative}
+.xt-cal .food-item p{margin:6px 0}
+.xt-cal .food-item input{padding:6px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);width:150px}
+.xt-cal .btn-delete{position:absolute;top:10px;right:10px;border:1px solid var(--danger);color:var(--danger);background:transparent;border-radius:8px;padding:4px 10px;cursor:pointer}
+.xt-cal .note-text{color:var(--muted);font-size:14px}
+.xt-cal .xt-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media (max-width:640px){.xt-cal .total{grid-template-columns:1fr}}

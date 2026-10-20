@@ -19,6 +19,9 @@ app.add_middleware(
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 HAND_REAL_WIDTH_CM = 8.5
 
+# Model names change often. Set GEMINI_MODEL on Render to force one; otherwise these are tried in order.
+MODEL_CANDIDATES = [m for m in [os.getenv("GEMINI_MODEL"), "gemini-3.8-flash", "gemini-3.7-flash", "gemini-2.5-flash"] if m]
+
 @app.get("/health")
 async def health_check():
     return {"status": "ok"}
@@ -29,7 +32,7 @@ async def analyze_meal(image: UploadFile = File(...)):
         return {"error": "请先设置 GEMINI_API_KEY 环境变量"}
     
     img_bytes = await image.read()
-    img = Image.open(io.BytesIO(img_bytes))
+    img = Image.open(io.BytesIO(img_bytes)).convert("RGB")
     img_w, img_h = img.size
     
     client = genai.Client(api_key=GEMINI_API_KEY)
@@ -65,11 +68,18 @@ async def analyze_meal(image: UploadFile = File(...)):
 }}"""
 
     try:
-        response = client.models.generate_content(
-            model="gemini-3.6-flash",
-            contents=[prompt, img]
-        )
-        
+        response, last_err = None, None
+        for model_name in MODEL_CANDIDATES:
+            try:
+                response = client.models.generate_content(model=model_name, contents=[prompt, img])
+                print(f"model used: {model_name}")
+                break
+            except Exception as e:
+                last_err = e
+                print(f"model {model_name} failed: {e}")
+        if response is None:
+            raise last_err
+
         result_text = response.text.strip()
         if result_text.startswith("```json"):
             result_text = result_text[7:]
