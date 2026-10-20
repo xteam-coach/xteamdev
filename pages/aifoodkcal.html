@@ -1,0 +1,48 @@
+<!-- Page: projects -->
+<section class="xt-cal" id="xtCal">
+  <div class="xt-head"><h2>📸 AI <span>食物卡路里</span>识别</h2></div>
+
+  <div class="guide-box xt-card">
+    <div>📐 <strong>建议 45° 斜角拍摄</strong>（稍微从上往下拍）</div>
+    <div>✋ <strong>手掌和食物一起入镜</strong>，放在同一平面</div>
+    <div>📏 <strong>距离约 30–60cm</strong>，光线充足</div>
+  </div>
+
+  <div class="choice-container" id="xtChoiceScreen">
+    <button class="choice-btn btn-upload" onclick="document.getElementById('xtFileInput').click()">📁 上传照片</button>
+    <input type="file" id="xtFileInput" accept="image/*" style="display:none;" onchange="xtCal.handleFileSelect(event)">
+  </div>
+
+  <div class="preview-container" id="xtPreviewContainer">
+    <div id="xtLoading" class="loading" style="display:none;">⏳ AI 识别中，请稍候...</div>
+
+    <div class="annotated-wrapper" id="xtAnnotatedWrapper" style="display:none;">
+      <img id="xtAnnotatedBase" alt="原图">
+    </div>
+
+    <div id="xtTotalArea" class="total" style="display:none;">
+      <div class="xt-card ring-card">
+        <div class="ring">
+          <svg viewBox="0 0 100 100"><circle class="trk" cx="50" cy="50" r="42"/><circle class="bar" id="xtRing" cx="50" cy="50" r="42" stroke-dasharray="263.9" stroke-dashoffset="263.9"/></svg>
+          <div class="pct" id="xtPct">0%</div>
+        </div>
+        <div class="stat">
+          <span class="lbl">总卡路里</span>
+          <span class="val"><span id="xtTotalCal">0</span><small>kcal</small></span>
+          <span id="xtHandBadge" class="hand-badge" style="display:none;">✋ 已检测手掌</span>
+        </div>
+      </div>
+      <div class="xt-card stat protein"><span class="lbl">蛋白质</span><span class="val"><span id="xtTotalProtein">0</span><small>g</small></span></div>
+      <div class="xt-card stat fibre"><span class="lbl">膳食纤维</span><span class="val"><span id="xtTotalFibre">0</span><small>g</small></span></div>
+    </div>
+
+    <div id="xtFoodListArea" style="display:none;">
+      <h3>🍽️ 识别到的食物</h3>
+      <div id="xtFoodItems"></div>
+      <div class="xt-actions">
+        <button class="btn-add" onclick="xtCal.addFoodItem()">➕ 添加食物</button>
+        <button class="btn-recalc" onclick="xtCal.recalculate()">🧮 重新计算</button>
+      </div>
+    </div>
+  </div>
+</section>

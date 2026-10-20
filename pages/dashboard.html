@@ -1,0 +1,35 @@
+<!-- Page: dashboard -->
+<section data-view="dash" hidden>
+    <h1>Dashboard</h1>
+    <p class="lead" id="hello"></p>
+    <div class="card note mb" id="note" hidden><span>Add your details and link a data file to fill this dashboard.</span><button class="btn primary" id="sampleBtn2">Use sample data</button></div>
+    <div class="top" id="top"></div>
+    <div class="mid">
+      <div class="sstack" id="sstack"></div>
+      <div class="card bc"><h3>Calories per entry</h3><div id="barBox"></div><p class="meta" id="barNote"></p></div>
+    </div>
+    <div class="pair">
+      <div class="panel">
+        <h3>Your details</h3>
+        <p class="lead" style="margin:0 0 4px">Used to calculate your BMR (Mifflin-St Jeor formula).</p>
+        <div class="fgrid">
+          <div><label for="pSex">Sex</label><select id="pSex"><option value="male">Male</option><option value="female">Female</option></select></div>
+          <div><label for="pAge">Age</label><input id="pAge" type="number" min="10" max="100" inputmode="numeric"></div>
+          <div><label for="pHeight">Height (cm)</label><input id="pHeight" type="number" min="100" max="250" inputmode="decimal"></div>
+          <div><label for="pWeight">Weight (kg)</label><input id="pWeight" type="number" min="30" max="300" step="0.1" inputmode="decimal"></div>
+          <div><label for="pAct">Activity</label><select id="pAct"><option value="1.2">Mostly sitting</option><option value="1.375">Light exercise</option><option value="1.55">Moderate exercise</option><option value="1.725">Intense exercise</option></select></div>
+        </div>
+        <p class="err" id="profErr" role="alert"></p>
+        <div class="actions"><button class="btn primary" id="saveProf">Save details</button></div>
+        <p class="meta" style="display:block">If your data file has a weight column, the latest weight in the file is used.</p>
+      </div>
+      <div class="panel">
+        <h3>Data file</h3>
+        <p class="lead" style="margin:0 0 8px"><b id="fileStat">No file linked yet</b></p>
+        <div class="actions" style="margin-top:0;flex-wrap:wrap"><button class="btn primary" id="linkBtn">Link data file</button><button class="btn" id="sampleBtn">Use sample data</button><button class="btn" id="unlinkBtn" hidden>Unlink</button></div>
+        <input type="file" id="fileIn" accept=".csv,text/csv" hidden>
+        <p class="err" id="fileErr" role="alert"></p>
+        <p class="meta" style="display:block">CSV file, one row per day, with columns <code>date</code> (YYYY-MM-DD), <code>weight</code>, <code>waist</code>, <code>chest</code>, <code>hips</code>, and optionally <code>calories</code>.</p>
+      </div>
+    </div>
+  </section>
